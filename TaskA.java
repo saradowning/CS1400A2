@@ -2,14 +2,15 @@
 // CS 1400
 // Assignment 2
 // 9/20/2024
-import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class TaskA {
     public static void main(String[] args){
         double totalShortbread = 0.0;
-        Scanner input = new Scanner(System.in);
-        System.out.println("How many pieces of shortbread do you want to make?");
-        totalShortbread = input.nextDouble();
+        String input = JOptionPane.showInputDialog(null, "How many pieces of shortbread do you want to make?");
+        if(input != null){
+            totalShortbread = Double.parseDouble(input);
+        }
         
         // Variables are set to the number of grams/oz of each ingredient that makes the amount of shortbread the user wants
         double butterG = (125.0 / 24) * totalShortbread;
@@ -19,11 +20,10 @@ public class TaskA {
         double flourG = (180.0 / 24) * totalShortbread;
         double flourOz = (6.0 / 24) * totalShortbread;
 
-        System.out.println("To make " + totalShortbread + " pieces of shortbread, you need:");
-        System.out.println(butterG + "g/" + butterOz + "oz of butter");
-        System.out.println(sugarG + "g/" + sugarOz + "oz of sugar");
-        System.out.println(flourG + "g/" + flourOz + "oz of flour");
-
-        input.close();
+        String measurementsMessage = "To make " + totalShortbread + " pieces of shortbread, you need:\n" + 
+                                      butterG + "g/" + butterOz + "oz of butter\n" + 
+                                      sugarG + "g/" + sugarOz + "oz of sugar\n" + 
+                                      flourG + "g/" + flourOz + "oz of flour";
+        JOptionPane.showMessageDialog(null, measurementsMessage);
     }
 }
